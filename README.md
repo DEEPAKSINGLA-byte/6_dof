@@ -26,3 +26,6 @@ Terminal 4
 cd 6_dof
 source install/setup.bash
 python3 src/control_node.py
+
+
+https://youtu.be/sbDG4Flq-o8
