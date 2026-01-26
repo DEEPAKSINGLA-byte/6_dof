@@ -1,31 +1,17 @@
-# =========================================================
-#  Bridge Configuration for 6-DOF Arm
-# =========================================================
-
-# 1. CLOCK (Essential)
-# Synchronizes ROS 2 time with Gazebo simulation time.
 - ros_topic_name: "clock"
   gz_topic_name: "clock"
   ros_type_name: "rosgraph_msgs/msg/Clock"
   gz_type_name: "gz.msgs.Clock"
   direction: GZ_TO_ROS
 
-# 2. TF (Essential)
-# Sends link positions from Gazebo to RViz so you can visualize the robot.
 - ros_topic_name: "/tf"
   gz_topic_name: "/model/six_dof_robot/pose" 
   ros_type_name: "tf2_msgs/msg/TFMessage"
   gz_type_name: "gz.msgs.Pose_V"
   direction: GZ_TO_ROS
 
-# 3. JOINT STATES (Optional but recommended)
-# Helps publish the angle of every joint to ROS.
 - ros_topic_name: "joint_states"
   gz_topic_name: "joint_states"
   ros_type_name: "sensor_msgs/msg/JointState"
   gz_type_name: "gz.msgs.Model"
   direction: GZ_TO_ROS
-
-# NOTE on Control:
-# We removed 'cmd_vel' because arms are usually controlled via 
-# 'ros2_control' or 'JointTrajectory' controllers, not velocity twists.
