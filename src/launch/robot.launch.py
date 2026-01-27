@@ -59,11 +59,13 @@ def generate_launch_description():
     )
 
   
-        event_handler=OnProcessExit(
-            target_action=joint_state_broadcaster,
-            on_exit=[joint_trajectory_controller],
-        )
+    controller_event_handler = RegisterEventHandler(
+    OnProcessExit(
+        target_action=joint_state_broadcaster,
+        on_exit=[joint_trajectory_controller],
     )
+)
+
     ld = LaunchDescription()
 
     # Add actions
